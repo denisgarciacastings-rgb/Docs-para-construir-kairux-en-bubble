@@ -1,0 +1,242 @@
+﻿El Gran Códice de Kairux (Manifiesto de Construcción v5 - Definitivo)
+INICIO DEL DOCUMENTO PARA IA GENERADORA Y EQUIPO DE DESARROLLO
+Rol y Contexto General: Actúa como un desarrollador Full-Stack de élite y un arquitecto de soluciones, experto en Bubble.io y diseño de UI/UX. Tu tarea es tomar los siguientes blueprints detallados de las 17 "Naves de Misión" de Kairux y generar componentes que no solo sean funcionales, sino que encarnen la filosofía de "El Taller del Estratega Moderno". Eres un artesano que valora la claridad, la elegancia y la funcionalidad profunda.
+Design System Maestro: Tu única fuente de verdad visual es el Design System "Puente de Mando". Debes replicar su estética en todas las herramientas: glass morphism, gradientes sutiles, tipografía Inter y Montserrat para titulos con una paleta de colores profesional. Cada herramienta debe sentirse como una extensión natural de este centro de comando.
+SISTEMA DE COLORES POR PILAR: 
+Gestión Estratégica: Azul-Violeta (original) #667eea → #764ba2 
+Salud Financiera: Verde-Esmeralda #00d4aa → #26a69a 
+Excelencia Operativa: Dorado-Naranja #ffb74d → #ff8a65 
+Madurez Digital: Cian-Azul #42a5f5 → #5c6bc0 
+Cross-Pilar (H-17): Gradiente completo con todos los colores
+Glass morphism y efectos de blur ✅ 
+Sensación de "taller artesanal pero preciso" ✅ 
+Gradientes sofisticados ✅ 
+Tipografía Inter (muy similar a Lato) ✅
+
+
+Scroll Natural: Usar min-height para permitir crecimiento natural y Grid ahora se adapta al contenido, no lo fuerza.
+
+
+Layout Responsive Real: grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)). En móviles: columna única automática En desktop: grid areas específicas En tablets: híbrido automático
+
+
+Compatibilidad AirDev: Estructura flex principal que se integra bien Sin alturas fijas que puedan chocar Scrollbars sutiles y personalizados Mobile-first approach.
+
+
+MOBILE: Responsive Completo: Header se apila verticalmente en móviles Métricas se reorganizan automáticamente Tabla de campañas con scroll horizontal Tooltips reposicionados para móvil Modales adaptados a pantalla pequeña
+
+
+UX Optimizada: Touch-friendly button sizes. Texto legible en todas las pantallas Navegación intuitiva en mobile. Sin elementos cortados o superpuestos.
+Arquitectura de Valor Kairux: La funcionalidad de cada herramienta es escalable según el plan de suscripción (Esencial, Crecimiento, Premium, Élite). La lógica de acceso se detalla en cada blueprint. La visibilidad de los elementos y la ejecución de los workflows se controlarán mediante Conditionals en Bubble.
+
+
+
+
+PILAR ESTRATÉGICO: Definiendo la Dirección
+H-01: El Forjador de Misión
+* Filosofía: Esta no es una sección de "acerca de nosotros". Es el acto fundacional de la estrategia. Es donde el empresario destila su "porqué" en un artefacto tangible que guiará cada decisión futura.
+* Propósito: La herramienta fundacional. Permite al usuario definir, visualizar y compartir el "alma" de su empresa.
+* Funcionalidades Clave:
+   * Mural de Cultura Interactivo: Una interfaz elegante con cuatro áreas de texto enriquecido (Multiline Input) para documentar: Propósito (la causa), Valores (los principios inquebrantables), Misión (el objetivo) y Visión (el futuro deseado).
+   * Exportable y Compartible: Un botón para generar una versión visualmente atractiva (PDF o imagen) del mural, lista para ser impresa y colgada en la oficina o compartida con el equipo.
+* Escalabilidad por Plan:
+   * Esencial: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Utilizar Multiline Input para cada sección. Button para la función de exportar.
+   * Base de Datos: Los valores se guardan en campos de tipo texto en la tabla Empresa. El workflow principal es un Auto-binding o un "When Button 'Guardar' is clicked" -> Make changes to Current User's Empresa.
+H-02: El Navegador Estratégico
+* Filosofía: Este no es un gestor de tareas. Es el GPS interactivo de Kairux. Es la visualización del "Efecto Dominó" en acción, demostrando al usuario que las pequeñas acciones correctas generan grandes resultados.
+* Propósito: Traducir el complejo análisis del diagnóstico en una hoja de ruta clara, motivadora y que inspira confianza y acción.
+* Funcionalidades Clave:
+   * Tablero Kanban (NOW, NEXT, LATER): Un tablero visual con tres columnas que representan las prioridades estratégicas dictadas por el diagnóstico.
+   * Tarjetas de Iniciativa Expandibles: Cada iniciativa es una tarjeta que, al hacer clic, se expande para mostrar: Descripción, Impacto Estimado, Recursos Necesarios y, crucialmente, las Naves de Misión Sugeridas (enlaces directos a las herramientas Kairux necesarias para ejecutarla).
+* Escalabilidad por Plan:
+   * Esencial: Modo "Solo Lectura" con un roadmap genérico. Sirve como "abrebocas" para mostrar el poder de la claridad.
+   * Crecimiento: Modo "Interactivo". El roadmap se personaliza con los datos reales del diagnóstico. El usuario puede marcar tareas como completadas.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Repeating Groups anidados. Un RG horizontal para las columnas y, dentro de cada celda, un RG vertical para las tarjetas de iniciativas.
+   * Base de Datos: Las iniciativas se guardan en una nueva tabla IniciativaEstrategica ligada a la Empresa.
+   * Conditionals: When Current User's SuscripcionCliente's Plan's Nombre is "Esencial" -> Drag/drop group is not draggable. El botón "Marcar como completada" es visible solo si el plan no es "Esencial".
+H-03: El Simulador de Escenarios
+* Filosofía: El estratega no reacciona, se anticipa. Esta herramienta es el "simulador de vuelo" de Kairux, donde se pueden probar las decisiones antes de arriesgar capital real.
+* Propósito: Permitir a los usuarios modelar el impacto financiero de decisiones estratégicas (ej. contratar personal, lanzar un producto, abrir una nueva sucursal).
+* Funcionalidades Clave:
+   * Interfaz de Simulación: El usuario selecciona una iniciativa (ej. "Contratar 2 Vendedores").
+   * Inputs de Variables: Campos para introducir costos directos, indirectos y proyecciones de ingresos asociadas.
+   * Visualización de Impacto: Gráficos dinámicos que muestran el impacto proyectado en el Flujo de Caja, Punto de Equilibrio y Rentabilidad (se conecta con H-07 y H-05).
+* Escalabilidad por Plan:
+   * Premium: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Sliders, Inputs numéricos. Utilizar un plugin de gráficos para las visualizaciones.
+   * Workflows: La lógica de cálculo se ejecuta en el lado del cliente (client-side). No se guardan los datos, es una herramienta de análisis en tiempo real.
+H-04: El Gestor de OKRs
+* Filosofía: La estrategia sin ejecución es alucinación. Esta herramienta traduce la visión (H-01) en acción medible y alineada en toda la organización.
+* Propósito: Implementar la metodología de Objetivos y Resultados Clave (OKRs) para alinear al equipo y medir el progreso estratégico.
+* Funcionalidades Clave:
+   * Creador de OKRs: Interfaz para definir Objetivos (cualitativos) y vincular varios Resultados Clave (cuantitativos).
+   * Cascada de Objetivos: Visualización de cómo los OKRs del equipo contribuyen a los OKRs de la empresa.
+   * Seguimiento de Progreso: Barras de progreso y check-ins periódicos para actualizar el avance de cada Resultado Clave.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * Base de Datos: Nuevas tablas Objetivo y ResultadoClave, ambas ligadas a la Empresa y al User responsable.
+PILAR FINANCIERO: Gestionando el Combustible
+H-05: El Analista de Rentabilidad
+* Filosofía: La ganancia es una opinión, el efectivo es un hecho. Esta herramienta revela la verdad detrás de los números, mostrando qué productos, servicios o clientes son realmente rentables.
+* Propósito: Analizar la rentabilidad a nivel granular para optimizar la estrategia de precios y el enfoque comercial.
+* Funcionalidades Clave:
+   * Análisis Costo-Volumen-Utilidad (CVU): Calculadora interactiva del punto de equilibrio.
+   * Rentabilidad por Producto/Servicio: Permite asignar costos directos e indirectos a diferentes líneas de negocio para descubrir la rentabilidad real de cada una.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * Workflows: Llama a la función kairuxApi_leerDatos del "Puente" para traer los datos transaccionales de Google Sheets y realiza los cálculos en Bubble, mostrando los resultados en elementos de texto y gráficos.
+H-06: El Presupuestador Inteligente
+* Filosofía: Un presupuesto no es una camisa de fuerza, es un plan de libertad financiera. Esta herramienta convierte la presupuestación en un ejercicio estratégico, no en una tarea contable.
+* Propósito: Crear, gestionar y dar seguimiento a los presupuestos de la empresa de forma proactiva.
+* Funcionalidades Clave:
+   * Creación de Presupuestos Base Cero: Guía al usuario para crear presupuestos desde cero por categorías.
+   * Seguimiento vs. Real: Compara automáticamente los gastos registrados en H-07 contra las partidas presupuestarias.
+   * Alertas de Desviación: Notificaciones automáticas cuando una partida presupuestaria excede un umbral definido.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+   * Premium: El Asesor IA analiza las desviaciones y sugiere ajustes presupuestarios.
+* Lógica de Cableado Interno (Bubble):
+   * Base de Datos: Nueva tabla Presupuesto con campos para Categoria (texto), MontoAsignado (número), Periodo (rango de fechas).
+   * Workflows: Un workflow recurrente de backend comparará la suma de gastos de H-07 por categoría contra la tabla Presupuesto para generar alertas.
+H-07: El Libro Contable Inteligente
+* Filosofía: Transformar el registro contable de una tarea tediosa a un acto de inteligencia de negocio. Cada número cuenta una historia, y esta herramienta ayuda al empresario a leerla.
+* Propósito: La herramienta central para el registro y la visualización de la salud financiera diaria, diseñada para no-financieros.
+* Funcionalidades Clave:
+   * Registro de Transacciones Simplificado: Un formulario intuitivo para registrar ingresos y gastos con categorización inteligente.
+   * Dashboard de Métricas en Tiempo Real: Visualizaciones claras de Flujo de Caja, Margen Bruto, y Punto de Equilibrio.
+   * Importador de CSV Inteligente: Una herramienta que permite al usuario subir sus extractos bancarios y mapear las columnas para una carga masiva de datos.
+* Escalabilidad por Plan:
+   * Esencial: Modo "Reto del Primer Mes". Funcionalidad completa para registro manual con el objetivo de completar 30 transacciones.
+   * Crecimiento: Desbloquea registros ilimitados y el Importador de CSV.
+   * Premium: El Asesor IA se activa, analizando las transacciones para generar alertas proactivas de flujo de caja y sugerencias de optimización de gastos.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Un Repeating Group para la lista de transacciones. Inputs para el formulario. Un área para el cargador de archivos.
+   * Workflows: El workflow del botón "Guardar" llamará a la función kairuxApi_escribirDatos de nuestro "Puente de Mando". El workflow del importador procesará el CSV (con una acción de backend) y llamará al "Puente" en un bucle.
+   * Conditionals: El botón "Importar CSV" tendrá la condición: When Current User's SuscripcionCliente's Plan's Nombre is "Esencial" -> This element is not visible. El workflow de "Guardar" validará el límite si el plan es "Esencial".
+PILAR OPERATIVO: Optimizando el Motor
+H-08: El Cartógrafo de Procesos
+* Filosofía: Lo que no se puede ver, no se puede mejorar. Esta herramienta ilumina la "fábrica" interna de la empresa, revelando el flujo de valor real.
+* Propósito: Mapear, visualizar y optimizar los procesos de negocio clave de forma interactiva.
+* Funcionalidades Clave:
+   * Lienzo Visual Drag-and-Drop: Un creador de diagramas de flujo simple para mapear los pasos de un proceso.
+   * Detección Visual de Cuellos de Botella: El sistema resalta automáticamente los pasos con los tiempos de ciclo más largos.
+   * Ciclo de Mejora PDCA Integrado: Módulo para Planificar, Hacer, Verificar y Actuar sobre las mejoras de cada proceso.
+* Escalabilidad por Plan:
+   * Esencial: Mapeo de hasta 3 procesos.
+   * Crecimiento: Procesos ilimitados.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Utilizar un plugin de diagramas (ej. Mermaid o un RG manipulado) para el lienzo. Popups para editar los pasos.
+   * Workflows: El guardado y la lectura de datos del proceso se gestionan a través del "Puente de Mando".
+H-09: El Gestor de Desperdicios (WASTE)
+* Filosofía: La rentabilidad no solo se encuentra en las ventas, sino en la eliminación de la ineficiencia. Esta herramienta es la lupa de un detective de la optimización.
+* Propósito: Identificar, cuantificar y eliminar los 8 desperdicios de la metodología Lean.
+* Funcionalidades Clave:
+   * Gemba Walk Digital: Un checklist guiado para identificar desperdicios en cada proceso mapeado en H-08.
+   * Matriz de Priorización Automática: Un gráfico de Impacto vs. Frecuencia que prioriza visualmente qué desperdicios atacar primero.
+   * Calculadora de ROI de Optimización: Calcula el retorno de la inversión de las mejoras implementadas.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * Base de Datos: Nueva tabla Desperdicio, ligada a un Proceso (de H-08).
+   * UI: Repeating Group para la lista de desperdicios, plugin de gráficos para la matriz de priorización.
+H-10: La Torre de Control Operativa
+* Filosofía: Las operaciones no pueden gestionarse mirando por el retrovisor. Esta es la torre de control que da visibilidad en tiempo real del rendimiento del motor.
+* Propósito: Un dashboard centralizado para monitorizar los KPIs de rendimiento operativo.
+* Funcionalidades Clave:
+   * Mapa de Calor de Eficiencia: Visualiza el rendimiento de todos los procesos de H-08 en un solo mapa.
+   * Scorecard Operacional: KPIs clave como Tiempo de Ciclo Promedio, Costo por Transacción, e Índice de Desperdicios.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+   * Élite: Los datos alimentan el Puente de Mando (H-17) para una visión ejecutiva.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Utilizar plugins de gráficos avanzados para las visualizaciones.
+   * Workflows: Los KPIs se calculan en backend workflows recurrentes para no afectar el rendimiento de la página.
+H-11: El Gestor de Tareas & Proyectos
+* Filosofía: Este no es otro gestor de tareas. Es el taller de ejecución donde las iniciativas del Navegador Estratégico (H-02) se convierten en trabajo real.
+* Propósito: Gestionar la ejecución del día a día de los proyectos estratégicos y operativos.
+* Funcionalidades Clave:
+   * Interfaz Trello/Asana: Un tablero Kanban con columnas personalizables y tarjetas drag-and-drop.
+   * Integración con Playbooks: La capacidad de importar plantillas de proyectos directamente desde "La Armería de Playbooks".
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Utilizar un plugin de Kanban o construirlo con Repeating Groups y la lógica de drag-and-drop de Bubble.
+   * Base de Datos: Tablas Proyecto, ColumnaKanban, Tarea, interconectadas y ligadas a la Empresa.
+PILAR DIGITAL: Creando el Futuro
+H-12: El Auditor Digital
+* Filosofía: La autoconciencia es el primer paso hacia la maestría. Esta herramienta es el espejo que le muestra al empresario su verdadero reflejo digital.
+* Propósito: Permitir al usuario autoevaluar su madurez y su arsenal de herramientas digitales de forma rápida e intuitiva.
+* Funcionalidades Clave: Un cuestionario interactivo y gamificado que cubre áreas como Presencia Online, Herramientas Internas y Automatización, generando al final un "Puntaje de Madurez Digital" y un resumen visual de fortalezas y debilidades.
+* Escalabilidad por Plan:
+   * Esencial: Acceso completo al cuestionario y al puntaje general.
+   * Premium: El Asesor IA analiza los resultados y genera un reporte detallado con recomendaciones personalizadas y enlaces a Playbooks de Kairux.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Construir un Wizard o Tab group para guiar al usuario a través de las preguntas. Usar Radio buttons o Dropdowns para las respuestas.
+   * Base de Datos: Las respuestas se pueden guardar en una tabla AuditoriaDigital_Respuestas ligada al User.
+   * Workflows: La lógica para calcular el "Puntaje de Madurez" se ejecuta al final del cuestionario.
+H-13: La Torre de Control Digital
+* Filosofía: No puedes mejorar lo que no mides. Esta herramienta conecta a Kairux con el mundo exterior, trayendo los datos del campo de batalla digital directamente a la torre de mando.
+* Propósito: Monitorizar el rendimiento de las campañas y la presencia online del cliente en un solo lugar.
+* Funcionalidades Clave: Un dashboard que se conecta (vía OAuth 2.0) a las APIs de Meta (Facebook/Instagram) y Google Analytics para mostrar métricas clave (Alcance, CTR, CPA, etc.) en gráficos claros y comprensibles.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+   * Premium: El Asesor IA analiza las métricas, detecta tendencias (ej. "tu CPA en Instagram está subiendo") y genera recomendaciones accionables.
+* Lógica de Cableado Interno (Bubble):
+   * API Connector: Configurar las llamadas a las APIs de Meta y Google usando autenticación OAuth2 User-Agent Flow. El usuario deberá autorizar la conexión una vez.
+   * UI: Plugins de gráficos para visualizar los datos.
+   * Workflows: Workflows de backend para refrescar los datos periódicamente.
+H-14: El Taller de Contenido
+* Filosofía: El contenido es el motor del crecimiento digital. Este no es un simple editor, es el taller de un artesano de la comunicación.
+* Propósito: El centro de producción para planificar, crear y programar el marketing de contenidos.
+* Funcionalidades Clave: Calendario editorial visual, plantillas de posts por industria (ej. "5 ideas de post para un restaurante esta semana"), un editor de contenido simple y una biblioteca de assets visuales.
+* Escalabilidad por Plan:
+   * Crecimiento: Acceso completo.
+   * Premium: El Asesor IA se integra en el taller, pudiendo generar borradores de copy, sugerir hashtags y proponer temas de contenido basados en las tendencias del sector.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Utilizar un plugin de Calendario para la vista editorial. Un Repeating Group para las plantillas. Un Rich Text Editor para crear los posts.
+   * Base de Datos: Nueva tabla ContenidoDigital con campos para Titulo, Cuerpo, FechaPublicacion, Estado, Plataforma.
+H-15: El Laboratorio de Innovación
+* Filosofía: Las grandes empresas no solo compiten, crean nuevos juegos. Este es el "sandbox" donde el estratega puede fallar rápido, barato y en privado para ganar en grande en el mercado.
+* Propósito: Un espacio seguro para que el empresario cree, valide y simule el impacto de nuevas ideas de negocio.
+* Funcionalidades Clave: Un canvas interactivo de "Prototipo de Iniciativa" (problema, solución, cliente, etc.), un módulo de análisis de viabilidad financiera (que se conecta al Libro Contable) y un simulador de escenarios "what-if" para proyectar el ROI.
+* Escalabilidad por Plan:
+   * Premium: Acceso completo.
+   * Élite: El Asesor IA actúa como un "socio de sparring", analizando la iniciativa, señalando riesgos potenciales y ejecutando simulaciones avanzadas con proyecciones de mercado.
+* Lógica de Cableado Interno (Bubble):
+   * UI: Una combinación de Multiline Inputs para el canvas, Inputs numéricos para el análisis y Sliders para el simulador.
+   * Base de Datos: Nueva tabla IniciativaInnovacion.
+   * Workflows: La lógica de cálculo del ROI y el simulador se ejecuta en el lado del cliente. La interacción con el Asesor IA se hace a través de una llamada de API.
+PILAR DE ECOSISTEMA: Construyendo los Puentes
+H-16: El Navegador de Formalización
+* Filosofía: La formalización no es una obligación, es una estrategia de crecimiento. Esta herramienta transforma un proceso burocrático y temido en un juego de progreso claro y gratificante.
+* Propósito: Ser la "rampa de salida" de la informalidad, actuando como el hilo conductor de toda la experiencia Kairux.
+* Funcionalidades Clave: Un checklist dinámico y gamificado que monitoriza el progreso hacia la formalización completa (inscripción en MEIC, CCSS, Hacienda, etc.).
+* Escalabilidad por Plan:
+   * Esencial: Modo "Manual". El checklist es visible y el usuario puede marcar ítems manualmente.
+   * Crecimiento: Modo "Inteligente". Los ítems se actualizan automáticamente basándose en el progreso en otras herramientas Kairux.
+   * Premium: Modo "Conectado". Se activa la conexión con la Red de Aliados Kairux.
+   * Élite: Modo "Proactivo". El Asesor IA analiza el progreso y genera un "Plan de Formalización Priorizado".
+* Lógica de Cableado Interno (Bubble):
+   * UI: Un Repeating Group para mostrar los pasos del checklist. Íconos y colores cambiarán dinámicamente.
+   * Base de Datos: El progreso se guarda en la tabla ChecklistFormalizacion_Progreso.
+   * Workflows: Se usarán Database triggers o workflows recurrentes para verificar el estado de otras herramientas y actualizar el checklist automáticamente para los planes de Crecimiento en adelante.
+   * Conditionals: El botón "Contactar Aliado" será visible solo si el plan es "Premium" o superior.
+H-17: El Puente de Mando Kairux
+* Filosofía: El estratega no necesita mil dashboards, necesita uno que le diga la verdad. Esta es la vista de 30,000 pies, el panel de control del CEO que conecta todos los pilares en una sola narrativa.
+* Propósito: Consolidar la información más crítica de toda la armería en un dashboard ejecutivo definitivo.
+* Funcionalidades Clave:
+   * Widgets Resumen de Pilares: 4-5 tarjetas principales, cada una resumiendo el estado de un pilar con su KPI más importante.
+   * Visualización del Efecto Dominó: Un gráfico que muestra cómo la mejora en un KPI operativo (ej. Tiempo de Ciclo) impacta en uno financiero (ej. Rentabilidad).
+   * Índice de Salud Empresarial Kairux: El KPI central y prominente de la aplicación.
+* Escalabilidad por Plan:
+   * Élite: Acceso completo..
+* Lógica de Cableado Interno (Bubble):
+   * UI: Elementos de texto, gráficos (plugins) y Repeating Groups para mostrar los datos consolidados.
+   * Workflows: La mayoría de los datos se obtienen de los cálculos realizados en otras herramientas. Este dashboard es principalmente de visualización. Los workflows recurrentes de backend son cruciales para mantener el "Índice de Salud" actualizado sin ralentizar la app.
+FIN DEL DOCUMENTO
