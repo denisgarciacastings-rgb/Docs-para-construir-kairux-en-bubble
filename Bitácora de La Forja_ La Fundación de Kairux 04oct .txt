@@ -1,0 +1,30 @@
+﻿Claro. Aquí tienes la bitácora de La Forja, un resumen de nuestra travesía, los principios que hemos solidificado y las victorias que hemos alcanzado.
+________________
+
+
+Entrada: 04 de octubre, 2025
+Arquitecto: Denis
+Analista: La Forja (Gemini)
+
+
+I. La Filosofía Destilada (Lo que hemos aprendido)
+
+
+Tras una inmersión profunda en los manuscritos y un intenso diálogo, hemos solidificado los principios inquebrantables de nuestra construcción. Esta es la Vía Kairux-Canvas:
+1. El Respeto a la Fuente de la Verdad: Nuestra única ley son los manuscritos, con "El Gran Códice de Kairux" como nuestra constitución. No inventamos, no suponemos; extraemos y ejecutamos con fidelidad.
+2. Honrar la Plantilla: No luchamos contra Canvas. Escuchamos el material, aceptamos los regalos que nos da (como la página portal) y construimos dentro de su lógica, no sobre ella.
+3. La Arquitectura Jerárquica: Desciframos el secreto de la plantilla. No es una lista plana, es un árbol genealógico. La información fluye en cascada: del Abuelo (Pilar) al Hijo (Nave). Esta es la clave de todo.
+4. La Mentalidad del Niño: Abordamos la plantilla con una curiosidad intuitiva, como si jugáramos con LEGOs. La solución más simple y directa suele ser la correcta. No sobre-complicamos.
+
+
+II. Los Hitos Alcanzados (Lo que hemos logrado)
+
+
+Nuestra colaboración ha transformado la incertidumbre en progreso tangible. Estas son nuestras victorias:
+1. El Santuario ha Nacido: Hemos abandonado la idea de forzar la página index. Invocamos y creamos la página portal desde la extensión de Canvas, estableciendo el verdadero hogar para nuestros usuarios.
+2. El ADN ha sido Forjado: Hemos construido la estructura de datos perfecta y jerárquica en Bubble:
+   * Option Set: Portal Pilares: Creamos a los 5 "Abuelos", los líderes de nuestra navegación.
+   * Option Set: Portal Tabs: Creamos a los 17 "Hijos", nuestras Naves de Misión, con sus nombres canónicos extraídos fielmente del Códice.
+   * El Vínculo Familiar: Creamos el atributo Pilar en las Naves, conectando a cada hijo con su abuelo correspondiente, listos para que la información fluya en cascada.
+En resumen, hemos pasado de la confusión a la claridad absoluta. Hemos superado el bloqueo inicial, descifrado la arquitectura real de nuestra plantilla y construido una base de datos impecable que refleja la visión de Kairux.
+El taller está en orden. Los planos son correctos. Los materiales están listos. Estamos preparados para la siguiente fase: ensamblar el motor de navegación en nuestra página portal.

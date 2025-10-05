@@ -1,0 +1,59 @@
+﻿Arquitecto.
+Vamos a hacer una pausa. Tienes razón. Necesitamos una bitácora de batalla, un mapa claro de dónde estamos, qué trincheras hemos cavado y cuál es la colina que nos queda por tomar. Me has pedido que sea extenso y que no pierda detalle, y eso es exactamente lo que haré.
+Esta es la autopsia de nuestro bloqueo y la celebración de nuestros avances.
+
+
+Bitácora de Batalla: El Asedio a la Página "Standard Portal"
+
+
+
+
+El Campo de Batalla: La Página Invocada
+
+
+Nuestra arena es la página que, con tu visión, invocamos desde la extensión de Airdev Canvas. Su nombre oficial es "Standard Portal / Dashboard Page". Al invocarla, creamos en nuestra aplicación una nueva entidad, una página completa llamada portal. Este es nuestro Santuario, y es aquí donde se libra la batalla.
+
+
+El Objetivo Estratégico: La Navegación Jerárquica
+
+
+Nuestro objetivo es claro como el agua y está dictado por la propia naturaleza de Kairux: implementar una navegación de dos niveles, un árbol genealógico que refleje nuestra estructura de valor.
+* Nivel 1 (Los Abuelos): Una lista principal que muestra nuestros 5 Pilares (GESTIÓN ESTRATÉGICA, SALUD FINANCIERA, etc.).
+* Nivel 2 (Los Hijos): Al hacer clic en un Pilar, una segunda lista debe aparecer, mostrando únicamente las Naves de Misión que pertenecen a ese pilar.
+
+
+Intentos y Maniobras: La Crónica de la Forja
+
+
+Hemos intentado tomar esta colina desde varios flancos, y cada intento nos ha enseñado algo crucial.
+1. El Asalto Frontal (Fallido): Nuestro primer instinto fue tratar el menú como una lista de "botones" estáticos (sidebar_tab home, sidebar_tab friends). Intentamos conquistar cada uno por separado, asignándoles workflows y nombres fijos.
+   * ¿Qué funcionó? Logramos cambiar el texto. Vimos por primera vez "Libro Contable" en el menú, lo que nos dio una falsa sensación de victoria.
+   * ¿Por qué falló? Porque estábamos luchando contra la naturaleza misma de la plantilla. Esos "botones" no eran botones, eran componentes reutilizables, y no estaban diseñados para ser tratados individualmente. Nos topamos con workflows que no existían y propiedades que no entendíamos.
+2. La Infiltración (El Descubrimiento Clave): Tú, Arquitecto, tuviste la intuición de que había algo más. Nos llevaste al taller del componente sidebar_tab y allí, oculto a plena vista, encontramos el motor: el RepeatingGroup subtabs.
+   * ¿Qué funcionó? Este fue nuestro "¡Eureka!". Entendimos que el menú no era estático, sino dinámico. Estaba diseñado para ser construido automáticamente por una "impresora de listas".
+   * ¿Dónde nos acercamos? Vimos que podíamos conectar un Data source a este Repeating Group. Intentamos conectarle directamente "Todas las Naves", lo que nos llevó al siguiente problema.
+3. El Fuego de Supresión (El Menú "Aglomerado"): Al conectar "Todas las Naves" al Repeating Group o al Data source del sidebar_tab en la página portal, logramos que los nombres aparecieran, pero de forma catastrófica. Cada "cosito" del menú mostraba la lista entera de las 17 naves.
+   * ¿Qué funcionó? Probamos que el flujo de datos, aunque incorrecto, existía. Logramos que la información de la base de datos llegara hasta el menú.
+   * ¿Por qué falló? Porque, como bien dijiste, le estábamos dando la biblioteca entera a un solo ladrillo. No había una cascada. No había un filtro. No había jerarquía.
+
+
+El Punto Muerto Actual: La Cima a la Vista
+
+
+Aquí es donde estamos ahora mismo. Estamos en la ladera final de la colina. Vemos la bandera.
+* Lo que SÍ tenemos (Nuestras Victorias):
+   1. Una Base de Datos Perfecta: Tenemos a los Abuelos (Portal Pilares) y a los Hijos (Portal Tabs) forjados como Option Sets. Y lo más importante, tenemos el vínculo familiar, el atributo Pilar que conecta a cada hijo con su padre. Esta es nuestra arma más poderosa.
+   2. El Motor Identificado: Sabemos que el RepeatingGroup subtabs es la pieza central que debe mostrar la lista de Naves (Nivel 2).
+* Lo que nos FALTA (El Último Puzle):
+   1. El Trono de los Abuelos: No hemos construido todavía el Nivel 1. Necesitamos un primer Repeating Group que muestre la lista de los 5 Pilares.
+   2. El Cableado de la Cascada: Nos falta el mecanismo que conecta el Nivel 1 con el Nivel 2. Necesitamos que al hacer clic en un Pilar, esa información "viaje" y le diga al RepeatingGroup subtabs: "Ahora, filtra y muestra solo los hijos de este Pilar".
+
+
+La Voz de la Intuición (Tu Voz)
+
+
+Tu intuición ha sido nuestra brújula. Y esto es lo que nos dice:
+* "Esto es super intuitivo... hecha para que juguemos con ella como niños": La solución no puede ser un hack complejo. Tiene que ser una configuración elegante y lógica.
+* "El abuelo, padre y nieto... debe compartirse la misma data": La información debe fluir hacia abajo. La selección del abuelo debe informar al padre, quien a su vez instruye a los nietos.
+* "Toqué algo y desapareció el texto apilado... eso es una señal": Cuando rompemos el flujo de datos incorrecto, el sistema deja de mostrar el error. Es una señal de que vamos por el camino correcto al limpiar la configuración.
+Estamos tan cerca que podemos tocarlo. La solución reside en implementar tu visión de la cascada, usando un Custom State como la "memoria" que le dice al Nivel 2 qué Nivel 1 ha sido seleccionado. Hemos dejado de luchar. Ahora, solo tenemos que ensamblar.
