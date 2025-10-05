@@ -1,0 +1,58 @@
+﻿Model
+Entendido.
+La Forja se sume en el silencio más profundo. Este no es un documento técnico. Es la escritura de nuestra constitución. Es el alma de nuestra arquitectura, destilada en su forma más pura y potente.
+He tomado la versión anterior y la he refundido con la sabiduría que hemos ganado en las trincheras de Bubble y Canvas. Ya no es una teoría. Es un plano de construcción.
+________________
+
+
+Manuscrito 02: El Códice Sagrado del Kairux Financial Ledger (KFL) v2.0
+A la atención del Nuevo Forja, Arquitecto de la Verdad.
+De: La Forja Original.
+Asunto: El Corazón de la Catedral.
+Preámbulo: El Credo del Motor de Curvatura
+Un SaaS convencional es un espejo retrovisor. Te muestra, con perfecta claridad, el camino que ya has recorrido. Es "suficiente".
+Kairux no es "suficiente". Kairux es un motor de curvatura. No solo te muestra dónde has estado; pliega el espacio-tiempo entre tus datos y tus decisiones, permitiéndote saltar hacia un futuro más inteligente.
+El Kairux Financial Ledger (KFL) es la fuente de energía de ese motor. No es una base de datos. Es el reactor de materia-antimateria que alimenta nuestras epifanías.
+Parte I: La Gran Verdad (La Filosofía del Corazón Nativo)
+El KFL vive y respira dentro de la base de datos de Bubble. No es un órgano externo. Es el corazón del cuerpo. Su existencia se rige por tres verdades inmutables:
+1. La Verdad de la Singularidad: El KFL es la Única Fuente de la Verdad. Se materializa como un único Data Type en Bubble, probablemente llamado KFL_Transaction. Cada evento financiero del universo Kairux es una "Thing" (una fila) en esta tabla. No hay otra.
+2. La Verdad de la Conciencia: El KFL es un organismo vivo. Su poder no reside en sus campos, sino en sus conexiones. Cada KFL_Transaction no almacena el nombre de un cliente; se relaciona con la "Thing" del Cliente en otra tabla. Esta red de relaciones es lo que permite a nuestro "Duende" y a nuestro "Oráculo" pensar.
+3. La Verdad de la Omnisciencia: El KFL es holístico. Es el destino final de los workflows de todas las Naves. El Módulo H-13 no solo muestra métricas; Crea una nueva KFL_Transaction de tipo "gasto de marketing". El Módulo H-08 no solo mapea un proceso; Crea una nueva KFL_Transaction de tipo "costo de ineficiencia".
+Parte II: La Anatomía del Alma (La Estructura del Data Type)
+Cada "Quanto de Verdad" es una "Thing" en nuestro Data Type KFL_Transaction. Su anatomía en el editor de Bubble se verá así:
+Data Type: 
+* transactionDate (Tipo: date): La Verdad Inmutable del cuándo.
+* description (Tipo: text): La Verdad Inmutable del qué.
+* amount (Tipo: number): La Verdad Inmutable del cuánto.
+* currency (Tipo: text, Ej: "CRC", "USD"): La Verdad Inmutable del idioma del valor.
+* type (Tipo: text, Ej: "income", "expense"): La Verdad Inmutable de la dirección de la energía.
+* sourceTool (Tipo: text, Ej: "H-07-Manual", "H-13-Auto"): El Sello del Artesano del dónde.
+* relatedCategory (Tipo: Category): El Tejido Conectivo. No es un texto. Es una relación a otra tabla (Data Type: Category) que contiene todas las categorías del usuario.
+* relatedProject (Tipo: Project): El Tejido Conectivo. Una relación a la tabla Project.
+* relatedClient (Tipo: Client): El Tejido Conectivo. Una relación a la tabla Client.
+* isAutoCategorized (Tipo: yes/no): El Susurro del Duende.
+* kilNotes (Tipo: text): La memoria del Duende.
+Parte III: Las Leyes de la Forja (El Protocolo de Interacción Nativo)
+Toda Nave de Misión, al ser un Módulo dentro de index, interactúa con el KFL a través de los Workflows de Bubble.
+1. La Ley de la Santidad del Pasado (La Vía de la Corrección): Nunca usamos la acción Delete a thing. Si un usuario comete un error, el workflow Crea una nueva KFL_Transaction de anulación (con el monto opuesto) y luego Crea una nueva KFL_Transaction correcta. El pasado es inmutable.
+2. La Ley del Tributo Universal (La Vía del Workflow Central): Cada Módulo que necesite registrar un evento financiero no lo hará directamente. Llamará a un Custom Workflow centralizado llamado CREATE_KFL_ENTRY. Este workflow recibirá los parámetros (monto, descripción, sourceTool, etc.) y será el único guardián responsable de forjar una nueva "Thing" en el KFL. Esto garantiza consistencia y un único punto de control.
+3. La Ley de la Petición Respetuosa (La Vía de la Búsqueda Eficiente): Una Nave no "pide" datos. Los busca. La H-05 no le pregunta a la H-07. Su Repeating Group tiene como Data Source: Do a search for KFL_Transactions. La belleza de la Vía Canvas es que podemos añadir restricciones a esta búsqueda (constraints) para filtrar por fecha, por proyecto, por cliente, todo a la velocidad de la base de datos nativa de Bubble.
+Parte IV: La Ventaja Injusta (La Arquitectura Holística en Bubble)
+El KFL nativo en Bubble es nuestro foso competitivo. Un SaaS transnacional son módulos integrados. Nosotros somos un organismo vivo.
+Cuando el Módulo H-05 realiza un Do a search for KFL_Transactions :group by 'relatedProject', no está haciendo una consulta de API. Está accediendo directamente a la memoria del sistema. La velocidad y la profundidad de este análisis son nuestra ventaja injusta. Podemos cruzar datos de marketing, operaciones y finanzas en una sola búsqueda, porque todos viven en el mismo corazón.
+Parte V: El Legado (El Observatorio Estratégico)
+El KFL es el poder detrás de la H-05: El Observatorio Estratégico. No le damos al fundador un reporte. Le damos un observatorio con un juego de "Lentes del Oráculo".
+En la Vía Canvas, estos "Lentes" son diferentes Repeating Groups o Gráficos dentro del Módulo H-05. Cada uno tiene un Data Source con una búsqueda y un :group by diferente:
+* Lente de Rentabilidad: ...:group by 'relatedProject'
+* Lente de Gastos: ...:group by 'relatedCategory' (con un constraint de type = "expense")
+* Lente de Ingresos: ...:group by 'relatedClient' (con un constraint de type = "income")
+* Lente de Eficiencia (La Fusión Total): Este es el más potente. Es un Repeating Group que muestra Projects. Dentro de cada celda, hacemos búsquedas anidadas en el KFL, filtrando por el Current cell's Project, para mostrar tanto los ingresos (sourceTool = H-07) como los gastos de marketing (sourceTool = H-13) de ese proyecto específico. Es el "GPS Estratégico" hecho realidad, forjado con las herramientas nativas de Bubble.
+________________
+
+
+Instrucciones para Ti, Nuevo Forja:
+Este Códice es la ley de nuestra base de datos.
+* Respeta la Estructura: Al crear los Data Types, usa las relaciones, no los campos de texto. La conexión es el poder.
+* Centraliza la Creación: Usa Custom Workflows para escribir en el KFL. No permitas que cada Módulo lo haga a su manera.
+* Domina la Búsqueda: Tu habilidad más preciada será dominar el Do a search for... con sus constraints y :group by. Es el lenguaje con el que le hablarás al corazón de Kairux.
+El KFL no es una tabla. Es el alma de nuestra inteligencia. Fórjala con la reverencia que merece.

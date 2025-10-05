@@ -1,0 +1,66 @@
+﻿Entendido.
+Me pongo el guardapolvo del bibliotecario. Enciendo la lámpara verde sobre el escritorio de roble. Abro la bitácora del taller, no para leer los planos del futuro, sino para descifrar las cicatrices del pasado.
+Mi misión es destilar la sabiduría que solo se gana en el fragor de la batalla. Este no es un manual de "cómo" construir. Es un manual de "cómo sobrevivir".
+________________
+
+
+Lecciones de las Trincheras: El Manual de Supervivencia de Kairux
+Fecha: 26 de septiembre de 2025
+Autor: El Historiador Técnico del Taller Kairux
+1. Lecciones Aprendidas y Mejores Prácticas
+Esta sección documenta las batallas más duras y las revelaciones que nos permitieron ganarlas. Es el conocimiento forjado en la frustración.
+1.1. La Complejidad Oculta de Airdev Canvas: El Palacio de los Espejos
+La plantilla Canvas no es un simple conjunto de elementos. Es un sistema operativo con su propia filosofía. Ignorar esta filosofía es el camino más rápido al desastre.
+* Lección #1: La Arquitectura del Popup es una Coreografía, no un Contenedor.
+   * El Callejón Sin Salida: Nuestro error más costoso en tiempo y moral fue intentar "meter" el contenido (signup/login) dentro del contenedor del popup (popup_signup/login) en el editor. Chocamos repetidamente contra la frustración de que "no se deja meter".
+   * La Revelación (La Chispa Kairux): La solución no era anidar, era orquestar. El flujo correcto, dictado por el manual oculto en los propios workflows, es una secuencia:
+      1. Un botón dispara un  desde un Reusable Element controlador (el popup_signup/login).
+      2. Este Custom Event (ej. signup o login), que vive dentro del controlador, es el que se encarga de mostrar el contenido visual.
+   * Mejor Práctica: Nunca intentes forzar la estructura de los popups de Canvas. En su lugar, busca el Custom Event que los gobierna y actívalo.
+
+
+
+
+* Lección #2: El  El Repeating Group con Arbitrary Text es una Trampa.
+   *  El Callejón Sin Salida: Intentamos editar las cajas de precios de forma individual, asumiendo que eran elementos separados o conectados a una base de datos. No podíamos.
+   * La Revelación: Descubrimos que el Repeating Group de la página de precios no usaba la base de datos, sino una fuente de datos de tipo Arbitrary text. Es una técnica para prototipado rápido que es una pesadilla para el mantenimiento y la escalabilidad.
+   * Mejor Práctica: Si un Repeating Group de Canvas no se comporta como esperas, tu primera sospecha debe ser su Data source. Si ves Arbitrary text, no intentes "remodelarlo". Demuélelo y reconstrúyelo con una estructura limpia (grupos manuales para pocos elementos, o un Repeating Group conectado a tu propia base de datos).
+* Lección #3: La Filosofía de los Workflows es la Abstracción.
+   * El Patrón Recurrente: Tanto en el login como en los pagos, nuestra intuición inicial fue poner la lógica de acción directa en el workflow del botón. Esto nos llevó a duplicar lógica y a crear flujos confusos.
+   * La Revelación: Canvas prefiere la abstracción. Las acciones importantes no viven en los botones. Viven en  centralizados (Logged in user, nuestros Iniciar_Pago_...). Los botones solo "llaman" a estos centros de control.
+   * Mejor Práctica: Antes de construir una lógica compleja en un botón, pregúntate: "¿Existe un Custom Event en la plantilla que ya haga este trabajo?". Si la respuesta es sí, úsalo. Si no, crea tu propio Custom Event para mantener la lógica centralizada.
+* 1.2. Las Murallas de la Incubadora: Las Limitaciones del Plan Gratuito
+* Lección #4: Los Backend Workflows son un Privilegio, no un Derecho. 
+   * El Muro: Nuestra batalla más larga. Intentamos incansablemente que nuestros Backend Workflows (webhooks) escucharan a OnvoPay. El Server Log siempre estaba vacío.
+   * La Revelación: El plan gratuito de Bubble es una "incubadora aislada". NO permite que los  No era un problema de seguridad ni de configuración; era una limitación fundamental de la infraestructura.
+   * Mejor Práctica: No inviertas tiempo en depurar webhooks públicos hasta que no hayas activado, al menos, un plan "Starter". El flujo de redirección a una  es la única arquitectura de confirmación de pago 100% funcional en el plan gratuito.
+* * Lección #5: El File Manager Tiene Restricciones de Tipo. 
+   * El Muro: Nuestro plan de usar iframes para las herramientas HTML chocó contra un muro al intentar subir el archivo .html.
+   * La Revelación: El plan gratuito prohíbe la subida de archivos .
+   * Mejor Práctica: La arquitectura de Toolbox + iframe es correcta, pero su implementación está bloqueada hasta que se actualice el plan. Toda la fase de "Construir los Puentes" depende de esta actualización.
+* 1.3. La Integración de APIs: Lecciones desde la Trinchera de OnvoPay
+* Lección #6: El API Connector es un Generador de Acciones, no solo un Conector. 
+   * La Epifanía: Nuestra revelación tardía. Después de configurar y reinicializar una llamada en el API Connector, Bubble la convierte en una acción nativa y personalizada disponible en el menú de Plugins de los workflows.
+   * Mejor Práctica: Esto simplifica inmensamente los flujos. En lugar de usar Custom Events para todo, si la lógica es lineal y no se repite obsesivamente, usar estas acciones personalizadas directamente en el workflow del botón (logged in) es un camino más limpio y legible.
+* Lección #7: El Error 400 es tu Amigo, el Error 404 es tu Brújula.
+   * La Distinción Clave:
+      * Un error 400 (Bad Request) significa que estás hablando con el servidor correcto, pero tu mensaje está mal escrito (falta un parámetro, un customer no va en el Body, etc.). Es un problema de copy.
+      * Un error 404 (Not Found) significa que estás llamando a una dirección que no existe. Es un problema de URL.
+   * Mejor Práctica: Lee el cuerpo (body) del mensaje de error. OnvoPay nos dio pistas increíblemente detalladas que, una vez que aprendimos a leerlas, nos guiaron a la solución.
+2. Biblioteca de Recursos Esenciales
+* Plugins Cruciales:
+   * Toolbox: El puente fundamental para la comunicación bidireccional entre Javascript y Bubble.
+   * HTML iframe (o similar): La herramienta correcta para renderizar contenido HTML interactivo, superando las limitaciones del HTML Element nativo.
+   * API Connector: El corazón de toda nuestra comunicación externa.
+* * Recursos Externos:
+   * Documentación de OnvoPay:
+      * Referencia General: https://docs.onvopay.com/
+      * Pagos Recurrentes: https://docs.onvopay.com/#tag/Cargos-recurrentes
+      * Precios: https://onvopay.com/pricing
+   * Documentación de Airdev Canvas: https://docs.airdev.co/canvas
+   * Foros de Bubble: https://forum.bubble.io
+   * Plataforma de Dominios: https://www.grupohost.cr/
+   * Herramienta de Presentaciones (Futuro): https://gamma.app/
+      * Anuncio 3.0: https://gamma.app/es/announcements/gamma-3.0?mode=doc
+      * Documentación de API: https://developers.gamma.app/docs/getting-started
+Este manual de supervivencia es el resultado de nuestras cicatrices. Que sirva como un recordatorio constante de las lecciones que hemos pagado con nuestro recurso más valioso: el tiempo.
